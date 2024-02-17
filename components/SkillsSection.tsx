@@ -9,8 +9,8 @@ interface Props {
 
 const SkillsSection: React.FC<Props> = ({ name, skills }) => {
   return (
-    <Box pb="8px">
-      <Typography color="white" fontSize="20px">
+    <Box pb="8px" display="flex" flexDirection="column" gap="8px">
+      <Typography color="white" fontSize="22px">
         {name}:
       </Typography>
       <Box display="flex" gap="8px" flexWrap="wrap">

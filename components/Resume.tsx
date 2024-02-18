@@ -14,7 +14,7 @@ const Resume = () => {
   const [skillTab, setSkillTab] = useState("general");
 
   return (
-    <Box py="42px" display="flex" justifyContent="center">
+    <Box id="resume" py="42px" display="flex" justifyContent="center">
       <Box width="800px">
         <GlassContainer p="36px">
           <Box pb="16px">

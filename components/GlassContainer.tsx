@@ -17,6 +17,7 @@ const GlassContainer: React.FC<Props> = ({ children, ...props }) => {
         backdropFilter: "blur(5px)",
         border: "1px solid rgba(255, 255, 255, 0.3)",
         WebkitBackdropFilter: "blur(5px)",
+        ...(props?.sx || {}),
       }}
     >
       {children}

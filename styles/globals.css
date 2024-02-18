@@ -39,3 +39,13 @@ body {
     transform: translate(0, -0px);
   }
 }
+
+input {
+  border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  padding: 16px 14px;
+  color: white;
+  font-size: 18px;
+}

@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-import GlassContainer from "./GlassContainer";
+import GlassContainer from "../GlassContainer";
 
 const Navigation = () => {
   const navigate = (id: string) => {

@@ -1,13 +1,13 @@
 import { Box, Collapse, Typography } from "@mui/material";
 import { School, Work } from "@mui/icons-material";
 
-import GlassContainer from "./GlassContainer";
-import GreenSection from "./GreenSection";
+import GlassContainer from "../GlassContainer";
+import GreenSection from "../GreenSection";
 import Progress from "./Progress";
 import ResumeBackground from "./ResumeBackground";
 import ResumeSection from "./ResumeSection";
 import SkillsSection from "./SkillsSection";
-import TitleText from "./TitleText";
+import TitleText from "../TitleText";
 import { useState } from "react";
 
 const Resume = () => {

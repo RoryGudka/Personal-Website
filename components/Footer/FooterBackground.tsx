@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import GreenSection from "./GreenSection";
+import GreenSection from "../GreenSection";
 import Particles from "react-tsparticles";
 import { ReactNode } from "react";
 
@@ -7,9 +7,9 @@ interface Props {
   children: ReactNode;
 }
 
-const ResumeBackground: React.FC<Props> = ({ children }) => {
+const FooterBackground: React.FC<Props> = ({ children }) => {
   return (
-    <GreenSection>
+    <GreenSection onlyClipTop>
       <Box width="100%" height="100%" overflow="hidden">
         <Box
           position="absolute"
@@ -18,10 +18,10 @@ const ResumeBackground: React.FC<Props> = ({ children }) => {
           height="100%"
           ml="-10%"
           mt="-10%"
-          sx={{ "#resume-particles": { height: "100%" } }}
+          sx={{ "#footer-particles": { height: "100%" } }}
         >
           <Particles
-            id="resume-particles"
+            id="footer-particles"
             width="120%"
             height="120%"
             options={{
@@ -101,4 +101,4 @@ const ResumeBackground: React.FC<Props> = ({ children }) => {
   );
 };
 
-export default ResumeBackground;
+export default FooterBackground;

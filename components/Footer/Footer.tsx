@@ -8,7 +8,7 @@ import {
   YouTube,
 } from "@mui/icons-material";
 
-import GlassContainer from "./GlassContainer";
+import GlassContainer from "../GlassContainer";
 import { Input } from "@mui/base";
 import LinkButton from "./LInkButton";
 

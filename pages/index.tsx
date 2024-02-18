@@ -1,16 +1,14 @@
 import { Box, Typography } from "@mui/material";
 
-import Footer from "@/components/Footer";
-import FooterBackground from "@/components/FooterBackground";
+import Footer from "@/components/Footer/Footer";
+import FooterBackground from "@/components/Footer/FooterBackground";
 import Head from "next/head";
-import HeroBackground from "@/components/HeroBackground";
-import Image from "next/image";
-import Navigation from "@/components/Navigation";
-import Resume from "@/components/Resume";
-import ResumeBackground from "@/components/ResumeBackground";
+import Hero from "@/components/Hero/Hero";
+import HeroBackground from "@/components/Hero/HeroBackground";
+import Project from "@/components/Projects/Project";
+import Resume from "@/components/Resume/Resume";
+import ResumeBackground from "@/components/Resume/ResumeBackground";
 import TitleText from "@/components/TitleText";
-import { Typewriter } from "react-simple-typewriter";
-import img from "@/public/me.png";
 
 export default function Home() {
   return (
@@ -22,55 +20,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeroBackground>
-        <Box width="100%" height="100dvh" display="flex">
-          <Box
-            width="50%"
-            height="100%"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Box display="flex" flexDirection="column">
-              <Typography color="white" fontSize="94px">
-                Rory Gudka
-              </Typography>
-              <Typography
-                color="white"
-                fontSize="42px"
-                height="42px"
-                lineHeight={1}
-              >
-                <Typewriter
-                  words={[
-                    "Electrical Engineer",
-                    "Full Stack Developer",
-                    "AI Enthusiast",
-                  ]}
-                  typeSpeed={30}
-                  deleteSpeed={30}
-                  delaySpeed={2500}
-                  loop
-                />
-              </Typography>
-              <Navigation />
-            </Box>
-          </Box>
-          <Box
-            width="50%"
-            height="100%"
-            display="flex"
-            justifyContent="center"
-            alignItems="flex-end"
-          >
-            <Image
-              src={img}
-              width={2142 / 4}
-              height={3435 / 4}
-              alt=""
-              style={{ zIndex: 1 }}
-            />
-          </Box>
-        </Box>
+        <Hero />
       </HeroBackground>
       <Box id="about" p="42px" display="flex" justifyContent="center">
         <Box display="flex" flexDirection="column" gap="42px" maxWidth="726px">
@@ -119,46 +69,83 @@ export default function Home() {
         <Resume />
       </ResumeBackground>
       <Box id="projects" p="42px" display="flex" justifyContent="center">
-        <Box display="flex" flexDirection="column" gap="42px" maxWidth="726px">
-          <TitleText>Projects</TitleText>
-          <Box display="flex" flexDirection="column" gap="8px">
-            <TitleText>Web Development</TitleText>
-            <Typography fontSize="20px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              mollis purus eget lacus dapibus vestibulum. Nunc neque ante,
-              rutrum sit amet rutrum vitae, dignissim at nulla. Suspendisse
-              potenti. Maecenas cursus enim nunc, sed aliquam purus interdum at.
-              Pellentesque quis gravida lacus. Sed nec cursus nibh. Sed
-              condimentum purus imperdiet, viverra odio sed, venenatis ligula.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-              volutpat est quis mattis sollicitudin.
-            </Typography>
+        <Box display="flex" flexDirection="column" maxWidth="726px">
+          <Box pb="32px">
+            <TitleText>Projects</TitleText>
           </Box>
-          <Box display="flex" flexDirection="column" gap="8px">
-            <TitleText>Electrical Engineering</TitleText>
-            <Typography fontSize="20px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              mollis purus eget lacus dapibus vestibulum. Nunc neque ante,
-              rutrum sit amet rutrum vitae, dignissim at nulla. Suspendisse
-              potenti. Maecenas cursus enim nunc, sed aliquam purus interdum at.
-              Pellentesque quis gravida lacus. Sed nec cursus nibh. Sed
-              condimentum purus imperdiet, viverra odio sed, venenatis ligula.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-              volutpat est quis mattis sollicitudin.
-            </Typography>
-          </Box>
-          <Box display="flex" flexDirection="column" gap="8px">
-            <TitleText>Artificial Intelligence</TitleText>
-            <Typography fontSize="20px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              mollis purus eget lacus dapibus vestibulum. Nunc neque ante,
-              rutrum sit amet rutrum vitae, dignissim at nulla. Suspendisse
-              potenti. Maecenas cursus enim nunc, sed aliquam purus interdum at.
-              Pellentesque quis gravida lacus. Sed nec cursus nibh. Sed
-              condimentum purus imperdiet, viverra odio sed, venenatis ligula.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-              volutpat est quis mattis sollicitudin.
-            </Typography>
+          <Box display="flex" flexDirection="column" gap="16px">
+            <Project
+              title="Ultra low power smart lock"
+              tag="Electrical engineering"
+              overview="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+            mollis purus eget lacus dapibus vestibulum. Nunc neque ante,
+            rutrum sit amet rutrum vitae, dignissim at nulla. Suspendisse
+            potenti. Maecenas cursus enim nunc, sed aliquam purus interdum
+            at. Pellentesque quis gravida lacus. Sed nec cursus nibh. Sed
+            condimentum purus imperdiet, viverra odio sed, venenatis ligula.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Praesent volutpat est quis mattis sollicitudin."
+              details={
+                <Typography fontSize="18px">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                  mollis purus eget lacus dapibus vestibulum. Nunc neque ante,
+                  rutrum sit amet rutrum vitae, dignissim at nulla. Suspendisse
+                  potenti. Maecenas cursus enim nunc, sed aliquam purus interdum
+                  at. Pellentesque quis gravida lacus. Sed nec cursus nibh. Sed
+                  condimentum purus imperdiet, viverra odio sed, venenatis
+                  ligula. Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Praesent volutpat est quis mattis sollicitudin.
+                </Typography>
+              }
+            />
+            <Project
+              title="MRI registration"
+              tag="Artificial intelligence"
+              overview="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+          mollis purus eget lacus dapibus vestibulum. Nunc neque ante,
+          rutrum sit amet rutrum vitae, dignissim at nulla. Suspendisse
+          potenti. Maecenas cursus enim nunc, sed aliquam purus interdum
+          at. Pellentesque quis gravida lacus. Sed nec cursus nibh. Sed
+          condimentum purus imperdiet, viverra odio sed, venenatis ligula.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Praesent volutpat est quis mattis sollicitudin."
+              details={
+                <Typography fontSize="18px">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                  mollis purus eget lacus dapibus vestibulum. Nunc neque ante,
+                  rutrum sit amet rutrum vitae, dignissim at nulla. Suspendisse
+                  potenti. Maecenas cursus enim nunc, sed aliquam purus interdum
+                  at. Pellentesque quis gravida lacus. Sed nec cursus nibh. Sed
+                  condimentum purus imperdiet, viverra odio sed, venenatis
+                  ligula. Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Praesent volutpat est quis mattis sollicitudin.
+                </Typography>
+              }
+            />
+            <Project
+              title="Electrocardiogram"
+              tag="Electrical engineering"
+              overview="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+        mollis purus eget lacus dapibus vestibulum. Nunc neque ante,
+        rutrum sit amet rutrum vitae, dignissim at nulla. Suspendisse
+        potenti. Maecenas cursus enim nunc, sed aliquam purus interdum
+        at. Pellentesque quis gravida lacus. Sed nec cursus nibh. Sed
+        condimentum purus imperdiet, viverra odio sed, venenatis ligula.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Praesent volutpat est quis mattis sollicitudin."
+              details={
+                <Typography fontSize="18px">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                  mollis purus eget lacus dapibus vestibulum. Nunc neque ante,
+                  rutrum sit amet rutrum vitae, dignissim at nulla. Suspendisse
+                  potenti. Maecenas cursus enim nunc, sed aliquam purus interdum
+                  at. Pellentesque quis gravida lacus. Sed nec cursus nibh. Sed
+                  condimentum purus imperdiet, viverra odio sed, venenatis
+                  ligula. Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Praesent volutpat est quis mattis sollicitudin.
+                </Typography>
+              }
+            />
           </Box>
         </Box>
       </Box>

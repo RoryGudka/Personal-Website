@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import GlassContainer from "./GlassContainer";
+import GlassContainer from "../GlassContainer";
 
 interface Props {
   Icon: any;

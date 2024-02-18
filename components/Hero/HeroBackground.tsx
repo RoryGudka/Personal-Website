@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import GreenSection from "./GreenSection";
+import GreenSection from "../GreenSection";
 import Particles from "react-tsparticles";
 import { ReactNode } from "react";
 

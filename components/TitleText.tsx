@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 
 interface Props {
+  variant?: "h1" | "h2" | "h3";
   small?: boolean;
   large?: boolean;
   underline?: boolean;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const TitleText: React.FC<Props> = ({
-  small,
+  variant = "h2",
   underline,
   center,
   children,
@@ -31,12 +32,7 @@ const TitleText: React.FC<Props> = ({
             }
       }
     >
-      <Typography
-        fontSize={small ? "28px" : "42px"}
-        lineHeight="1"
-        pb="8px"
-        textAlign={center ? "center" : "left"}
-      >
+      <Typography variant={variant} textAlign={center ? "center" : "left"}>
         <b>{children}</b>
       </Typography>
       {underline && (

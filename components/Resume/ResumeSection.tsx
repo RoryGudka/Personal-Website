@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
 
+import DesktopDisplayOnly from "../DesktopDisplayOnly";
+import MobileDisplayOnly from "../MobileDisplayOnly";
 import { ReactElement } from "react";
 import { School } from "@mui/icons-material";
 
@@ -7,6 +9,7 @@ interface Props {
   Icon: any;
   title: string;
   subtitle: string;
+  timeline: string;
   bullets: string[];
   link?: string;
   noBottomPadding?: boolean;
@@ -16,6 +19,7 @@ const ResumeSection: React.FC<Props> = ({
   Icon,
   title,
   subtitle,
+  timeline,
   bullets,
   link,
   noBottomPadding,
@@ -34,14 +38,21 @@ const ResumeSection: React.FC<Props> = ({
         >
           <Icon sx={{ color: "white", fontSize: "22px" }} />
         </Box>
-        <Typography
-          color="white"
-          fontSize="28px"
-          lineHeight={1}
-          fontWeight={600}
+        <Box
+          flex="1 0 0"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
         >
-          {title}
-        </Typography>
+          <Typography variant="h3" color="white">
+            {title}
+          </Typography>
+          <DesktopDisplayOnly>
+            <Typography variant="h5" color="white">
+              {timeline}
+            </Typography>
+          </DesktopDisplayOnly>
+        </Box>
       </Box>
       <Box display="flex" alignItems="stretch" gap="16px">
         <Box
@@ -54,13 +65,21 @@ const ResumeSection: React.FC<Props> = ({
           <Box width="2px" bgcolor="white" />
         </Box>
         <Box>
-          <Typography color="white" fontSize="28px" lineHeight={1} mb="8px">
+          <Typography variant="h5" fontWeight={600} color="white">
             {subtitle}
           </Typography>
-          <Typography color="white" fontSize="20px" lineHeight={1}>
-            August 2020 - May 2024 * 4 yr
-          </Typography>
-          <Box pl="24px" pt="16px" pb={noBottomPadding ? "0px" : "16px"}>
+          <MobileDisplayOnly>
+            <Typography variant="h5" color="white" mt="8px">
+              {timeline}
+            </Typography>
+          </MobileDisplayOnly>
+          <Box
+            pt="8px"
+            pb={noBottomPadding ? "0px" : "16px"}
+            display="flex"
+            flexDirection="column"
+            gap="2px"
+          >
             {bullets.map((bullet) => (
               <Box key={bullet} display="flex" alignItems="stretch" gap="16px">
                 <Box display="flex" justifyContent="center" alignItems="center">
@@ -71,7 +90,7 @@ const ResumeSection: React.FC<Props> = ({
                     borderRadius="100%"
                   />
                 </Box>
-                <Typography color="white" fontSize="20px">
+                <Typography color="white" fontSize="18px">
                   {bullet}
                 </Typography>
               </Box>

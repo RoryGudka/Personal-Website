@@ -22,7 +22,7 @@ const Navigation = () => {
         }}
         onClick={() => navigate("about")}
       >
-        <Typography color="white" fontSize="22px">
+        <Typography color="white" fontSize="22px" fontFamily="Anta">
           About me
         </Typography>
       </GlassContainer>
@@ -37,7 +37,7 @@ const Navigation = () => {
         }}
         onClick={() => navigate("resume")}
       >
-        <Typography color="white" fontSize="22px">
+        <Typography color="white" fontSize="22px" fontFamily="Anta">
           Resume
         </Typography>
       </GlassContainer>
@@ -52,7 +52,7 @@ const Navigation = () => {
         }}
         onClick={() => navigate("projects")}
       >
-        <Typography color="white" fontSize="22px">
+        <Typography color="white" fontSize="22px" fontFamily="Anta">
           Projects
         </Typography>
       </GlassContainer>
@@ -67,7 +67,7 @@ const Navigation = () => {
         }}
         onClick={() => navigate("contact")}
       >
-        <Typography color="white" fontSize="22px">
+        <Typography color="white" fontSize="22px" fontFamily="Anta">
           Contact
         </Typography>
       </GlassContainer>

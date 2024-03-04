@@ -49,3 +49,54 @@ input {
   color: white;
   font-size: 18px;
 }
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.75;
+  }
+}
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.75;
+  }
+}
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.75;
+  }
+}
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.75;
+  }
+}
+.animate-flicker {
+  -webkit-animation: flickerAnimation 3s infinite;
+  -moz-animation: flickerAnimation 3s infinite;
+  -o-animation: flickerAnimation 3s infinite;
+  animation: flickerAnimation 3s infinite;
+}

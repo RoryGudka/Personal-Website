@@ -9,23 +9,31 @@ import {
 } from "@mui/icons-material";
 
 import GlassContainer from "../GlassContainer";
-import { Input } from "@mui/base";
 import LinkButton from "./LInkButton";
+import TitleText from "../TitleText";
+import { mobileSx } from "@/libs/breakpoints";
 
 const Footer = () => {
   return (
-    <Box id="contact" py="42px" display="flex" justifyContent="center">
+    <Box
+      id="contact"
+      display="flex"
+      justifyContent="center"
+      sx={{ p: "42px", ...mobileSx({ px: "5vw" }) }}
+    >
       <Box width="800px">
         <GlassContainer
-          p="36px"
           display="flex"
           flexDirection="column"
-          gap="8px"
+          gap="16px"
+          sx={{ p: "36px", ...mobileSx({ p: "24px" }) }}
         >
-          <Typography color="white" fontSize="42px" fontWeight={600}>
-            Contact me
-          </Typography>
-          <Typography color="white" fontSize="22px">
+          <Box pb="12px">
+            <TitleText variant="h2" white>
+              Send me a message
+            </TitleText>
+          </Box>
+          <Typography variant="h3" color="white">
             Contact info:
           </Typography>
           <GlassContainer>
@@ -42,7 +50,7 @@ const Footer = () => {
               fullWidth
             />
           </GlassContainer>
-          <Typography color="white" fontSize="22px">
+          <Typography variant="h3" color="white">
             Message
           </Typography>
           <GlassContainer>
@@ -62,15 +70,10 @@ const Footer = () => {
             />
           </GlassContainer>
           <Button
-            variant="text"
+            color="primary"
             fullWidth
-            sx={{
-              transition: "2s bgcolor",
-              mt: "16px",
-              color: "#30a3a2",
-              bgcolor: "rgba(255, 255, 255, 0.9)",
-              "&:hover": { bgcolor: "rgba(255, 255, 255, 1)" },
-            }}
+            sx={{ mt: "16px" }}
+            variant="contained"
           >
             Send
           </Button>

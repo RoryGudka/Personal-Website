@@ -8,22 +8,31 @@ import ResumeBackground from "./ResumeBackground";
 import ResumeSection from "./ResumeSection";
 import SkillsSection from "./SkillsSection";
 import TitleText from "../TitleText";
+import { mobileSx } from "@/libs/breakpoints";
 import { useState } from "react";
 
 const Resume = () => {
   const [skillTab, setSkillTab] = useState("general");
 
   return (
-    <Box id="resume" py="42px" display="flex" justifyContent="center">
+    <Box
+      id="resume"
+      display="flex"
+      justifyContent="center"
+      sx={{ p: "36px", ...mobileSx({ px: "5vw" }) }}
+    >
       <Box width="800px">
-        <GlassContainer p="36px">
+        <GlassContainer sx={{ p: "36px", ...mobileSx({ px: "24px" }) }}>
           <Box pb="16px">
-            <TitleText white>Education</TitleText>
+            <TitleText variant="h2" white>
+              Education
+            </TitleText>
           </Box>
           <ResumeSection
             Icon={School}
             title="University of Virginia"
             subtitle="Electrical Engineering, BS"
+            timeline="08/2020 - 05/2024"
             bullets={[
               "Developed skills in a variety of fields such as circuit analysis, signal processing, digital logic, mathematics, artificial intelligence, and machine learning",
               "Completed engineering projects, including an audio analyzer, an electrocardiogram, and a smart lock",
@@ -33,20 +42,27 @@ const Resume = () => {
             Icon={School}
             title="Waseda University"
             subtitle="Exchange Program"
+            timeline="04/2023 - 07/2023"
             bullets={[
               "Participated in an exchange program at Waseda University in Tokyo, Japan, where I focused my efforts on improving my Japanese language skills",
             ]}
             noBottomPadding
           />
         </GlassContainer>
-        <GlassContainer p="36px" mt="42px">
+        <GlassContainer
+          mt="42px"
+          sx={{ p: "36px", ...mobileSx({ px: "24px" }) }}
+        >
           <Box pb="16px">
-            <TitleText white>Experience</TitleText>
+            <TitleText variant="h2" white>
+              Experience
+            </TitleText>
           </Box>
           <ResumeSection
             Icon={Work}
             title="Surfboard"
             subtitle="Full Stack Developer"
+            timeline="06/2020 - Present"
             bullets={[
               "Developed the backend architecture and frontend UI necessary to control document permissions across the application",
               "Migrated the frontend codebase from React to Next.js",
@@ -57,6 +73,7 @@ const Resume = () => {
             Icon={Work}
             title="Glenfinnan Horses"
             subtitle="Freelance Developer"
+            timeline="08/2022 - 10/2022"
             bullets={[
               "Developed a site allowing my client to display their horses for sale, easily edit all information through an admin portal, manage user contact, and track analytics",
               "Spearheaded development of an enriched text editor with a variety of custom content, including a migration from Quill.js to Slate.js",
@@ -66,6 +83,7 @@ const Resume = () => {
             Icon={Work}
             title="MKGMagic Pours"
             subtitle="Freelance Developer"
+            timeline="12/2020 - 02/2021"
             bullets={[
               "Developed a site allowing my client to display their paintings for sale via a highly interactive image carousel",
               "Migrated Vanilla JS project to Next.js to eliminate hosting costs",
@@ -73,23 +91,27 @@ const Resume = () => {
             noBottomPadding
           />
         </GlassContainer>
-        <GlassContainer p="36px" mt="42px">
+        <GlassContainer
+          mt="42px"
+          sx={{ p: "36px", ...mobileSx({ px: "24px" }) }}
+        >
           <Box pb="16px">
-            <TitleText white>Skills</TitleText>
+            <TitleText variant="h2" white>
+              Skills
+            </TitleText>
           </Box>
           <Box
             sx={{ cursor: "pointer" }}
             onClick={() => setSkillTab("general")}
           >
             <Typography
-              py="8px"
+              variant="h3"
               color="white"
-              fontSize="28px"
               borderBottom="1px solid white"
+              py="16px"
             >
               General
             </Typography>
-
             <Collapse in={skillTab === "general"}>
               <Box py="16px">
                 <SkillsSection
@@ -117,10 +139,10 @@ const Resume = () => {
           </Box>
           <Box sx={{ cursor: "pointer" }} onClick={() => setSkillTab("web")}>
             <Typography
-              py="8px"
+              variant="h3"
               color="white"
-              fontSize="28px"
               borderBottom="1px solid white"
+              py="16px"
             >
               Web Development
             </Typography>
@@ -154,10 +176,10 @@ const Resume = () => {
             onClick={() => setSkillTab("electrical")}
           >
             <Typography
-              py="8px"
+              variant="h3"
               color="white"
-              fontSize="28px"
               borderBottom="1px solid white"
+              py="16px"
             >
               Electrical Engineering
             </Typography>
@@ -188,10 +210,10 @@ const Resume = () => {
           </Box>
           <Box sx={{ cursor: "pointer" }} onClick={() => setSkillTab("ai")}>
             <Typography
-              py="8px"
+              variant="h3"
               color="white"
-              fontSize="28px"
               borderBottom="1px solid white"
+              py="16px"
             >
               Artificial Intelligence
             </Typography>
@@ -204,11 +226,10 @@ const Resume = () => {
                 <SkillsSection
                   name="General skills"
                   skills={[
-                    "Circuit analysis",
-                    "Signal processing",
-                    "Digital logic",
-                    "Embedded systems",
-                    "RF circuits",
+                    "Machine learning",
+                    "Deep learning",
+                    "Convolutional neural networks",
+                    "Transformer networks",
                   ]}
                 />
               </Box>

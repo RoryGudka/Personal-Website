@@ -79,7 +79,7 @@ const Footer = () => {
               />
             </GlassContainer>
             <Typography variant="h3" color="white">
-              Message
+              Message:
             </Typography>
             <GlassContainer>
               <OutlinedInput

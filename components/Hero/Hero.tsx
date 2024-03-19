@@ -114,18 +114,20 @@ const Hero = () => {
             </Box>
           </Box>
           <Box display="flex" justifyContent="center">
-            <Box
-              position="relative"
-              height={`${imageHeightMobileVw}vw`}
-              width={`${imageWidthMobileVw}vw`}
-            >
-              <Image
-                src={img}
-                alt=""
-                fill
-                style={{ zIndex: 1, objectFit: "contain" }}
-              />
-            </Box>
+            <FadeIn>
+              <Box
+                position="relative"
+                height={`${imageHeightMobileVw}vw`}
+                width={`${imageWidthMobileVw}vw`}
+              >
+                <Image
+                  src={img}
+                  alt=""
+                  fill
+                  style={{ zIndex: 1, objectFit: "contain" }}
+                />
+              </Box>
+            </FadeIn>
           </Box>
           <Box
             className="animate-flicker"

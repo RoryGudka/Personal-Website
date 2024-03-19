@@ -26,8 +26,8 @@ const Footer = () => {
     if (!sending) {
       try {
         setSending(true);
-        const res = await post("/send_message", { contact, message });
-        toast.success(res.data?.msg || "Success");
+        await post("/send_message", { contact, message });
+        toast.success("Successfully sent message");
         setContact("");
         setMessage("");
         setSending(false);
@@ -46,6 +46,7 @@ const Footer = () => {
       sx={{ p: "42px", ...mobileSx({ px: "2.5vw" }) }}
     >
       <Box width="800px">
+        {" "}
         <FadeIn>
           <GlassContainer
             display="flex"
@@ -109,8 +110,6 @@ const Footer = () => {
               Send
             </Button>
           </GlassContainer>
-        </FadeIn>
-        <FadeIn>
           <Box
             pt="32px"
             display="flex"

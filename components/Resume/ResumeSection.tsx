@@ -48,7 +48,7 @@ const ResumeSection: React.FC<Props> = ({
             {title}
           </Typography>
           <DesktopDisplayOnly>
-            <Typography variant="h5" color="white">
+            <Typography fontSize="18px" color="white">
               {timeline}
             </Typography>
           </DesktopDisplayOnly>
@@ -65,11 +65,11 @@ const ResumeSection: React.FC<Props> = ({
           <Box width="2px" bgcolor="white" />
         </Box>
         <Box>
-          <Typography variant="h5" fontWeight={600} color="white">
+          <Typography variant="h4" color="white">
             {subtitle}
           </Typography>
           <MobileDisplayOnly>
-            <Typography variant="h5" color="white" mt="8px">
+            <Typography variant="body1" color="white" mt="6px">
               {timeline}
             </Typography>
           </MobileDisplayOnly>

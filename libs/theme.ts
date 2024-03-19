@@ -35,13 +35,13 @@ export const theme = createTheme({
     },
     h4: {
       fontFamily: '"Open Sans", sans-serif',
-      fontSize: "24px",
-      lineHeight: 1,
-    },
-    h5: {
-      fontFamily: '"Open Sans", sans-serif',
       fontSize: "20px",
       lineHeight: 1,
+      fontWeight: 600,
+    },
+    body1: {
+      fontFamily: '"Open Sans", sans-serif',
+      fontSize: "18px",
     },
   },
 });

@@ -11,7 +11,7 @@ interface Props {
   image?: any;
   title: string;
   overview: string;
-  details: ReactNode;
+  details?: ReactNode;
 }
 
 const Project: React.FC<Props> = ({ image, title, overview, details }) => {
@@ -45,29 +45,33 @@ const Project: React.FC<Props> = ({ image, title, overview, details }) => {
           )}
           <Typography fontSize="18px">{overview}</Typography>
         </Box>
-        <Collapse in={showDetails}>
-          <Box pt="16px" display="flex" flexDirection="column" gap="16px">
-            {details}
-          </Box>
-        </Collapse>
-        <Box
-          display="flex"
-          justifyContent="center"
-          pt="8px"
-          sx={{ cursor: "pointer" }}
-          onClick={() => setShowDetails(!showDetails)}
-        >
-          <Typography color="#30a3a2" fontSize="16px">
-            See {showDetails ? "less" : "more"}
-          </Typography>
-          <ChevronLeftRounded
-            sx={{
-              color: "#30a3a2",
-              transition: "0.15s rotate",
-              rotate: showDetails ? "90deg" : "-90deg",
-            }}
-          />
-        </Box>
+        {details && (
+          <>
+            <Collapse in={showDetails}>
+              <Box pt="16px" display="flex" flexDirection="column" gap="16px">
+                {details}
+              </Box>
+            </Collapse>
+            <Box
+              display="flex"
+              justifyContent="center"
+              pt="8px"
+              sx={{ cursor: "pointer" }}
+              onClick={() => setShowDetails(!showDetails)}
+            >
+              <Typography color="#30a3a2" fontSize="16px">
+                See {showDetails ? "less" : "more"}
+              </Typography>
+              <ChevronLeftRounded
+                sx={{
+                  color: "#30a3a2",
+                  transition: "0.15s rotate",
+                  rotate: showDetails ? "90deg" : "-90deg",
+                }}
+              />
+            </Box>
+          </>
+        )}
       </DesktopDisplayOnly>
       <MobileDisplayOnly>
         <Box position="relative" width="90vw" height="90vw" mb="16px">
@@ -89,29 +93,33 @@ const Project: React.FC<Props> = ({ image, title, overview, details }) => {
           <TitleText variant="h3">{title}</TitleText>
         </Box>
         <Typography fontSize="18px">{overview}</Typography>
-        <Collapse in={showDetails}>
-          <Box pt="16px" display="flex" flexDirection="column" gap="16px">
-            {details}
-          </Box>
-        </Collapse>
-        <Box
-          display="flex"
-          justifyContent="center"
-          pt="8px"
-          sx={{ cursor: "pointer" }}
-          onClick={() => setShowDetails(!showDetails)}
-        >
-          <Typography color="#30a3a2" fontSize="16px">
-            See {showDetails ? "less" : "more"}
-          </Typography>
-          <ChevronLeftRounded
-            sx={{
-              color: "#30a3a2",
-              transition: "0.15s rotate",
-              rotate: showDetails ? "90deg" : "-90deg",
-            }}
-          />
-        </Box>
+        {details && (
+          <>
+            <Collapse in={showDetails}>
+              <Box pt="16px" display="flex" flexDirection="column" gap="16px">
+                {details}
+              </Box>
+            </Collapse>
+            <Box
+              display="flex"
+              justifyContent="center"
+              pt="8px"
+              sx={{ cursor: "pointer" }}
+              onClick={() => setShowDetails(!showDetails)}
+            >
+              <Typography color="#30a3a2" fontSize="16px">
+                See {showDetails ? "less" : "more"}
+              </Typography>
+              <ChevronLeftRounded
+                sx={{
+                  color: "#30a3a2",
+                  transition: "0.15s rotate",
+                  rotate: showDetails ? "90deg" : "-90deg",
+                }}
+              />
+            </Box>
+          </>
+        )}
       </MobileDisplayOnly>
     </>
   );

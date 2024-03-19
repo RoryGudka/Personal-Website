@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { ChevronLeft, KeyboardDoubleArrowDown } from "@mui/icons-material";
 
 import DesktopDisplayOnly from "../DesktopDisplayOnly";
+import FadeIn from "../FadeIn";
 import Image from "next/image";
 import MobileDisplayOnly from "../MobileDisplayOnly";
 import Navigation from "./Navigation";
@@ -14,7 +15,7 @@ const Hero = () => {
   const imageHeightDesktopVh = 90;
   const imageWidthDesktopVh =
     (imageWidthPx / imageHeightPx) * imageHeightDesktopVh;
-  const imageWidthMobileVw = 90;
+  const imageWidthMobileVw = 80;
   const imageHeightMobileVw =
     (imageHeightPx / imageWidthPx) * imageWidthMobileVw;
 
@@ -56,18 +57,20 @@ const Hero = () => {
             justifyContent="center"
             alignItems="flex-end"
           >
-            <Box
-              position="relative"
-              height={`${imageHeightDesktopVh}vh`}
-              width={`${imageWidthDesktopVh}vh`}
-            >
-              <Image
-                src={img}
-                alt=""
-                fill
-                style={{ zIndex: 1, objectFit: "contain" }}
-              />
-            </Box>
+            <FadeIn>
+              <Box
+                position="relative"
+                height={`${imageHeightDesktopVh}vh`}
+                width={`${imageWidthDesktopVh}vh`}
+              >
+                <Image
+                  src={img}
+                  alt=""
+                  fill
+                  style={{ zIndex: 1, objectFit: "contain" }}
+                />
+              </Box>
+            </FadeIn>
           </Box>
         </Box>
         <Box
@@ -89,8 +92,8 @@ const Hero = () => {
         </Box>
       </DesktopDisplayOnly>
       <MobileDisplayOnly>
-        <Box>
-          <Box px="5vw" pt="20vh" pb="64px">
+        <Box minHeight="100dvh">
+          <Box px="5vw" pt="5vh" pb="64px">
             <Box display="flex" flexDirection="column">
               <Typography variant="h1" color="white" pb="16px">
                 Rory Gudka
@@ -123,6 +126,23 @@ const Hero = () => {
                 style={{ zIndex: 1, objectFit: "contain" }}
               />
             </Box>
+          </Box>
+          <Box
+            className="animate-flicker"
+            position="absolute"
+            bottom="108px"
+            width="100%"
+            display="flex"
+            justifyContent="center"
+          >
+            <ChevronLeft
+              sx={{
+                color: "white",
+                fontSize: "64px",
+                rotate: "-90deg",
+                transform: "scaleY(1.5)",
+              }}
+            />
           </Box>
         </Box>
       </MobileDisplayOnly>

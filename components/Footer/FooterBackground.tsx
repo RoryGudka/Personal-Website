@@ -7,7 +7,7 @@ interface Props {
 
 const FooterBackground: React.FC<Props> = ({ children }) => {
   return (
-    <GreenSection id="footer" onlyClipTop>
+    <GreenSection id="footer-background" onlyClipTop>
       {children}
     </GreenSection>
   );

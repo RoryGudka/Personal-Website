@@ -46,7 +46,6 @@ const Footer = () => {
       sx={{ p: "42px", ...mobileSx({ px: "2.5vw" }) }}
     >
       <Box width="800px">
-        {" "}
         <FadeIn>
           <GlassContainer
             display="flex"

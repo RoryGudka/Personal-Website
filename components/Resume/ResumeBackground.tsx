@@ -6,7 +6,7 @@ interface Props {
 }
 
 const ResumeBackground: React.FC<Props> = ({ children }) => {
-  return <GreenSection id="resume">{children}</GreenSection>;
+  return <GreenSection id="resume-background">{children}</GreenSection>;
 };
 
 export default ResumeBackground;

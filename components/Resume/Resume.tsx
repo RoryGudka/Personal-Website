@@ -3,9 +3,6 @@ import { School, Work } from "@mui/icons-material";
 
 import FadeIn from "../FadeIn";
 import GlassContainer from "../GlassContainer";
-import GreenSection from "../GreenSection";
-import Progress from "./Progress";
-import ResumeBackground from "./ResumeBackground";
 import ResumeSection from "./ResumeSection";
 import SkillsSection from "./SkillsSection";
 import TitleText from "../TitleText";

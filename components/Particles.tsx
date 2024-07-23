@@ -12,7 +12,7 @@ const Particles = () => {
 
   const scale = 2;
   const density = 0.0001 / Math.pow(scale, 2);
-  const speed = 0.1 * scale;
+  const speed = 0.2 * scale;
   const size = 3 * scale;
   const length = 150 * scale;
 
@@ -132,7 +132,7 @@ const Particles = () => {
       const angle = random.float(0, 2 * Math.PI);
       const index = particles.findIndex(({ temp }) => temp);
       if (index === -1) {
-        particles.push({ x, y, angle, radius: 3, temp: true });
+        particles.push({ x, y, angle, radius: 3 * scale, temp: true });
       } else {
         particles[index].x = x;
         particles[index].y = y;
@@ -149,7 +149,7 @@ const Particles = () => {
       const angle = random.float(0, 2 * Math.PI);
       const index = particles.findIndex(({ temp }) => temp);
       if (index === -1) {
-        particles.push({ x, y, angle, radius: 3 });
+        particles.push({ x, y, angle, radius: 3 * scale });
       } else {
         particles[index].x = x;
         particles[index].y = y;

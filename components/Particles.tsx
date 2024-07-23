@@ -5,8 +5,7 @@ import random from "random";
 
 const Particles = () => {
   const ref = useRef<HTMLCanvasElement>();
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
   const fps = 30;
   const opacity = 0.3;
 
@@ -22,9 +21,8 @@ const Particles = () => {
         const canvas = ref.current;
         if (!canvas) return;
 
-        const { width, height } = canvas.getBoundingClientRect();
-        setWidth(width * 2);
-        setHeight(height * 2);
+        const { width } = canvas.getBoundingClientRect();
+        setWindowWidth(width);
       }, 1);
     };
 
@@ -45,11 +43,14 @@ const Particles = () => {
       temp?: boolean;
     }[] = [];
 
+    if (!windowWidth) return;
+
     const canvas = ref.current;
     if (!canvas) return;
 
-    if (!width || !height) return;
-
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width * scale;
+    const height = rect.height * scale;
     canvas.width = width;
     canvas.height = height;
 
@@ -165,7 +166,7 @@ const Particles = () => {
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("click", handleClick);
     };
-  }, [width, height]);
+  }, [windowWidth]);
 
   return (
     <Box width="120%" height="120%">

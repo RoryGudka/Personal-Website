@@ -6,11 +6,7 @@ interface Props {
 }
 
 const HeroBackground: React.FC<Props> = ({ children }) => {
-  return (
-    <GreenSection id="hero-background" onlyClipBottom>
-      {children}
-    </GreenSection>
-  );
+  return <GreenSection onlyClipBottom>{children}</GreenSection>;
 };
 
 export default HeroBackground;

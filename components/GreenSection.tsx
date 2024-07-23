@@ -3,14 +3,12 @@ import Particles from "./Particles";
 import { ReactNode } from "react";
 
 interface Props {
-  id: string;
   children: ReactNode;
   onlyClipBottom?: boolean;
   onlyClipTop?: boolean;
 }
 
 const GreenSection: React.FC<Props> = ({
-  id,
   children,
   onlyClipBottom,
   onlyClipTop,
@@ -25,7 +23,6 @@ const GreenSection: React.FC<Props> = ({
           height="100%"
           ml="-10%"
           mt="-10%"
-          sx={{ [`#${id}`]: { height: "100%" } }}
         >
           <Particles />
         </Box>

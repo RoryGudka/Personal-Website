@@ -17,14 +17,15 @@ const Particles = () => {
   const length = 150 * scale;
 
   useEffect(() => {
-    const canvas = ref.current;
-    if (!canvas) return;
-
     const handler = () => {
-      const { width, height } = canvas.getBoundingClientRect();
-      console.log(width, height);
-      setWidth(width * 2);
-      setHeight(height * 2);
+      setTimeout(() => {
+        const canvas = ref.current;
+        if (!canvas) return;
+
+        const { width, height } = canvas.getBoundingClientRect();
+        setWidth(width * 2);
+        setHeight(height * 2);
+      }, 1);
     };
 
     handler();
@@ -36,8 +37,13 @@ const Particles = () => {
   }, []);
 
   useEffect(() => {
-    const particles: { x: number; y: number; angle: number; radius: number }[] =
-      [];
+    const particles: {
+      x: number;
+      y: number;
+      angle: number;
+      radius: number;
+      temp?: boolean;
+    }[] = [];
 
     const canvas = ref.current;
     if (!canvas) return;
@@ -67,21 +73,29 @@ const Particles = () => {
     }
 
     const interval = setInterval(() => {
+      const canvas = ref.current;
+      if (!canvas) return;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
       ctx.clearRect(0, 0, width, height);
       for (let i = 0; i < particles.length; i++) {
-        const { x, y, angle, radius } = particles[i];
-        let newX = x + Math.cos(angle) * speed;
-        let newY = y + Math.sin(angle) * speed;
-        if (newX >= width) newX = newX - width;
-        if (newY >= height) newY = newY - height;
-        particles[i].x = newX;
-        particles[i].y = newY;
+        const { x, y, angle, radius, temp } = particles[i];
+        if (!temp) {
+          let newX = x + Math.cos(angle) * speed;
+          let newY = y + Math.sin(angle) * speed;
+          if (newX >= width) newX = newX - width;
+          if (newY >= height) newY = newY - height;
+          particles[i].x = newX;
+          particles[i].y = newY;
 
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-        ctx.arc(newX, newY, radius, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.closePath();
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+          ctx.arc(newX, newY, radius, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.closePath();
+        }
       }
 
       for (let i = 0; i < particles.length; i++) {
@@ -94,7 +108,7 @@ const Particles = () => {
             );
 
             if (distance < length) {
-              const op = (1 - distance / length) / 2;
+              const op = (1 - distance / length) / 1.5;
               ctx.strokeStyle = `rgba(255, 255, 255, ${op})`;
               ctx.lineWidth = 1;
               ctx.beginPath();
@@ -108,8 +122,48 @@ const Particles = () => {
       }
     }, 1000 / fps);
 
+    const handleMouseMove = (e: MouseEvent) => {
+      const canvas = ref.current;
+      if (!canvas) return;
+
+      const { left, top } = canvas.getBoundingClientRect();
+      const x = (e.clientX - left) * scale;
+      const y = (e.clientY - top) * scale;
+      const angle = random.float(0, 2 * Math.PI);
+      const index = particles.findIndex(({ temp }) => temp);
+      if (index === -1) {
+        particles.push({ x, y, angle, radius: 3, temp: true });
+      } else {
+        particles[index].x = x;
+        particles[index].y = y;
+      }
+    };
+
+    const handleClick = (e: MouseEvent) => {
+      const canvas = ref.current;
+      if (!canvas) return;
+
+      const { left, top } = canvas.getBoundingClientRect();
+      const x = (e.clientX - left) * scale;
+      const y = (e.clientY - top) * scale;
+      const angle = random.float(0, 2 * Math.PI);
+      const index = particles.findIndex(({ temp }) => temp);
+      if (index === -1) {
+        particles.push({ x, y, angle, radius: 3 });
+      } else {
+        particles[index].x = x;
+        particles[index].y = y;
+        delete particles[index].temp;
+      }
+    };
+
+    canvas.addEventListener("mousemove", handleMouseMove);
+    canvas.addEventListener("click", handleClick);
+
     return () => {
       clearInterval(interval);
+      canvas.removeEventListener("mousemove", handleMouseMove);
+      canvas.removeEventListener("click", handleClick);
     };
   }, [width, height]);
 

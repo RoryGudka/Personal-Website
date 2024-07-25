@@ -57,20 +57,6 @@ const Projects = () => {
           </FadeIn>
           <FadeIn>
             <Project
-              image={brain_registration}
-              title="MRI image registration"
-              overview="As one of my final projects at the University of Virginia, I picked an active research topic in AI, which involved the domain gap generalization of an image registration model. To create this, several simple image datasets (MNist and Google QuickDraw) were input to a VoxelMorph model as training data, and the model was tested on MRI scans of brains to see how well the model could extract registration patterns for images outside of the domain."
-            />
-          </FadeIn>
-          <FadeIn>
-            <Project
-              image={ekg}
-              title="Electrocardiogram"
-              overview="As an electrical engineering project at the University of Virginia, I worked on the development of a basic electrocardiogram circuit board, which allowed a user to attach electrodes on their wrists and a reference electrode on their ankle to collect a reading of their pulse. This project involved the use of Sallen-Key filters, anti-aliasing filters, moving average filters, instrumentation amplifiers, integrating amplifiers, and isolators. "
-            />
-          </FadeIn>
-          <FadeIn>
-            <Project
               image={minecraft}
               title="Minecraft calculator"
               overview="As a personal project, I created a fully functional calculator in Minecraft that supports addition, subtraction, multiplication, and division of both positive and negative numbers. The inputs can range from -999 to 999, which are initially stored as three 4-bit BCD numbers and a 1-bit negation boolean, which are later converted into 11-bit binary numbers, and the output is a 22-bit binary number that is later converted to six 4-bit BCD numbers that can realistically range from -998,001 to 998,001."
@@ -119,6 +105,20 @@ const Projects = () => {
                   </Typography>
                 </>
               }
+            />
+          </FadeIn>
+          <FadeIn>
+            <Project
+              image={brain_registration}
+              title="MRI image registration"
+              overview="As one of my final projects at the University of Virginia, I picked an active research topic in AI, which involved the domain gap generalization of an image registration model. To create this, several simple image datasets (MNist and Google QuickDraw) were input to a VoxelMorph model as training data, and the model was tested on MRI scans of brains to see how well the model could extract registration patterns for images outside of the domain."
+            />
+          </FadeIn>
+          <FadeIn>
+            <Project
+              image={ekg}
+              title="Electrocardiogram"
+              overview="As an electrical engineering project at the University of Virginia, I worked on the development of a basic electrocardiogram circuit board, which allowed a user to attach electrodes on their wrists and a reference electrode on their ankle to collect a reading of their pulse. This project involved the use of Sallen-Key filters, anti-aliasing filters, moving average filters, instrumentation amplifiers, integrating amplifiers, and isolators. "
             />
           </FadeIn>
         </Box>

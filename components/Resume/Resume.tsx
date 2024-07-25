@@ -116,30 +116,21 @@ const Resume = () => {
                 General
               </Typography>
               <Collapse in={skillTab === "general"}>
-                <Box
-                  display="flex"
-                  gap="24px"
-                  py="16px"
-                  sx={{ ...mobileSx({ flexDirection: "column" }) }}
-                >
+                <Box display="flex" flexDirection="column" gap="24px" py="16px">
                   <SkillsSection
                     name="Programming languages"
                     skills={[
-                      {
-                        name: "JavaScript / TypeScript / Node.js",
-                        percentage: 100,
-                      },
-                      { name: "Python", percentage: 75 },
-                      { name: "C", percentage: 60 },
+                      "JavaScript",
+                      "TypeScript",
+                      "Python",
+                      "C",
+                      "Java",
+                      "PHP",
                     ]}
                   />
                   <SkillsSection
                     name="Languages"
-                    skills={[
-                      { name: "English (native)", percentage: 100 },
-                      { name: "Japanese (N2 certified)", percentage: 80 },
-                      { name: "Spanish", percentage: 60 },
-                    ]}
+                    skills={["English", "Japanese (N2 certified)"]}
                   />
                 </Box>
               </Collapse>

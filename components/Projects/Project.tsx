@@ -59,12 +59,22 @@ const Project: React.FC<Props> = ({ image, title, overview, details }) => {
               sx={{ cursor: "pointer" }}
               onClick={() => setShowDetails(!showDetails)}
             >
-              <Typography color="#30a3a2" fontSize="16px">
+              <Typography
+                fontSize="16px"
+                fontWeight={800}
+                fontFamily='"Anta", sans-serif'
+                sx={{
+                  background:
+                    "linear-gradient(to bottom right,#50a3a2 0,#78cc6d 100%)",
+                  WebkitTextFillColor: "transparent",
+                  WebkitBackgroundClip: "text",
+                }}
+              >
                 See {showDetails ? "less" : "more"}
               </Typography>
               <ChevronLeftRounded
                 sx={{
-                  color: "#30a3a2",
+                  color: "#78cc6d",
                   transition: "0.15s rotate",
                   rotate: showDetails ? "90deg" : "-90deg",
                 }}
@@ -107,12 +117,20 @@ const Project: React.FC<Props> = ({ image, title, overview, details }) => {
               sx={{ cursor: "pointer" }}
               onClick={() => setShowDetails(!showDetails)}
             >
-              <Typography color="#30a3a2" fontSize="16px">
+              <Typography
+                fontFamily='"Anta", sans-serif'
+                sx={{
+                  background:
+                    "linear-gradient(to bottom right,#50a3a2 0,#78cc6d 100%)",
+                  WebkitTextFillColor: "transparent",
+                  WebkitBackgroundClip: "text",
+                }}
+              >
                 See {showDetails ? "less" : "more"}
               </Typography>
               <ChevronLeftRounded
                 sx={{
-                  color: "#30a3a2",
+                  color: "#78cc6d",
                   transition: "0.15s rotate",
                   rotate: showDetails ? "90deg" : "-90deg",
                 }}

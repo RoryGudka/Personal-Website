@@ -15,14 +15,14 @@ const Hero = () => {
   const imageHeightDesktopVh = 90;
   const imageWidthDesktopVh =
     (imageWidthPx / imageHeightPx) * imageHeightDesktopVh;
-  const imageWidthMobileVw = 80;
+  const imageWidthMobileVw = 55;
   const imageHeightMobileVw =
     (imageHeightPx / imageWidthPx) * imageWidthMobileVw;
 
   return (
     <>
       <DesktopDisplayOnly>
-        <Box width="100%" height="100dvh" display="flex">
+        <Box width="100%" height="100vh" display="flex">
           <Box
             width="50%"
             height="100%"
@@ -84,7 +84,7 @@ const Hero = () => {
           <ChevronLeft
             sx={{
               color: "white",
-              fontSize: "64px",
+              fontSize: "82px",
               rotate: "-90deg",
               transform: "scaleY(1.5)",
             }}
@@ -92,7 +92,7 @@ const Hero = () => {
         </Box>
       </DesktopDisplayOnly>
       <MobileDisplayOnly>
-        <Box minHeight="100dvh">
+        <Box minHeight="100vh">
           <Box px="5vw" pt="5vh" pb="64px">
             <Box display="flex" flexDirection="column">
               <Typography variant="h1" color="white" pb="16px">
@@ -113,38 +113,37 @@ const Hero = () => {
               </Typography>
             </Box>
           </Box>
-          <Box display="flex" justifyContent="center">
-            <FadeIn>
-              <Box
-                position="relative"
-                height={`${imageHeightMobileVw}vw`}
-                width={`${imageWidthMobileVw}vw`}
-              >
-                <Image
-                  src={img}
-                  alt=""
-                  fill
-                  style={{ zIndex: 1, objectFit: "contain" }}
-                />
-              </Box>
-            </FadeIn>
-          </Box>
-          <Box
-            className="animate-flicker"
-            position="absolute"
-            bottom="108px"
-            width="100%"
-            display="flex"
-            justifyContent="center"
-          >
-            <ChevronLeft
-              sx={{
-                color: "white",
-                fontSize: "64px",
-                rotate: "-90deg",
-                transform: "scaleY(1.5)",
-              }}
-            />
+          <Box display="flex" flexDirection="column" gap="16px">
+            <Box display="flex" justifyContent="center">
+              <FadeIn>
+                <Box
+                  position="relative"
+                  height={`${imageHeightMobileVw}vw`}
+                  width={`${imageWidthMobileVw}vw`}
+                >
+                  <Image
+                    src={img}
+                    alt=""
+                    fill
+                    style={{ zIndex: 1, objectFit: "contain" }}
+                  />
+                </Box>
+              </FadeIn>
+            </Box>
+            <Box
+              className="animate-flicker"
+              display="flex"
+              justifyContent="center"
+            >
+              <ChevronLeft
+                sx={{
+                  color: "white",
+                  fontSize: "64px",
+                  rotate: "-90deg",
+                  transform: "scaleY(1.5)",
+                }}
+              />
+            </Box>
           </Box>
         </Box>
       </MobileDisplayOnly>

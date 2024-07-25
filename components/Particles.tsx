@@ -16,21 +16,16 @@ const Particles = () => {
   const length = 150 * scale;
 
   useEffect(() => {
-    const handler = () => {
-      setTimeout(() => {
-        const canvas = ref.current;
-        if (!canvas) return;
+    const interval = setInterval(() => {
+      const canvas = ref.current;
+      if (!canvas) return;
 
-        const { width } = canvas.getBoundingClientRect();
-        setWindowWidth(width);
-      }, 1);
-    };
+      const { width } = canvas.getBoundingClientRect();
+      setWindowWidth(width);
+    }, 33);
 
-    handler();
-
-    window.addEventListener("resize", handler);
     return () => {
-      window.removeEventListener("resize", handler);
+      clearInterval(interval);
     };
   }, []);
 

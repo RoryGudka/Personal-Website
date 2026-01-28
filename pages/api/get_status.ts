@@ -1,0 +1,37 @@
+import { NextApiRequest, NextApiResponse } from "next";
+import { validateToken, validateDevice } from "../../libs/auth-helpers";
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  if (req.method !== "GET") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  const { accessToken, deviceId } = req.query as { [key: string]: string };
+
+  const details = await validateToken(res, accessToken);
+  if (!details) return;
+
+  const { username, email } = details;
+  console.info(`Username: ${username}, Email: ${email}`);
+
+  const device = await validateDevice(res, email, deviceId);
+  if (!device) return;
+
+  if (device) {
+    res.json({
+      deviceId: device["deviceId"],
+      isLocked: device["isLocked"],
+      batteryStatus: device["batteryStatus"],
+      isUnlockCalibrated: device["isUnlockCalibrated"],
+      isLockCalibrated: device["isLockCalibrated"],
+      lastUpdateTimestamp: device["lastUpdateTimestamp"],
+      availableNetworks: device["availableNetworks"],
+      connectedNetwork: device["connectedNetwork"],
+    });
+  } else {
+    res.status(404).json({ error: "Invalid device id" });
+  }
+}

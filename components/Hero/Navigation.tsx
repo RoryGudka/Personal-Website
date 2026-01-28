@@ -15,6 +15,7 @@ const Navigation = () => {
         px="12px"
         py="4px"
         sx={{
+          position:"relative",
           cursor: "pointer",
           borderRadius: "32px",
           transition: "0.15s background-color",
@@ -30,6 +31,7 @@ const Navigation = () => {
         px="12px"
         py="4px"
         sx={{
+          position:"relative",
           cursor: "pointer",
           borderRadius: "32px",
           transition: "0.15s background-color",
@@ -45,6 +47,7 @@ const Navigation = () => {
         px="12px"
         py="4px"
         sx={{
+          position:"relative",
           cursor: "pointer",
           borderRadius: "32px",
           transition: "0.15s background-color",
@@ -60,6 +63,7 @@ const Navigation = () => {
         px="12px"
         py="4px"
         sx={{
+          position:"relative",
           cursor: "pointer",
           borderRadius: "32px",
           transition: "0.15s background-color",

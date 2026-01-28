@@ -12,7 +12,7 @@ import img from "@/public/me.png";
 const Hero = () => {
   const imageHeightPx = 3435;
   const imageWidthPx = 2142;
-  const imageHeightDesktopVh = 90;
+  const imageHeightDesktopVh = 75;
   const imageWidthDesktopVh =
     (imageWidthPx / imageHeightPx) * imageHeightDesktopVh;
   const imageWidthMobileVw = 55;
@@ -62,6 +62,7 @@ const Hero = () => {
                 position="relative"
                 height={`${imageHeightDesktopVh}vh`}
                 width={`${imageWidthDesktopVh}vh`}
+                bottom={`${(100 - imageHeightDesktopVh) / 2}vh`}
               >
                 <Image
                   src={img}
@@ -76,7 +77,7 @@ const Hero = () => {
         <Box
           className="animate-flicker"
           position="absolute"
-          bottom="108px"
+          bottom="0px"
           width="100%"
           display="flex"
           justifyContent="center"
@@ -91,7 +92,7 @@ const Hero = () => {
           />
         </Box>
       </DesktopDisplayOnly>
-      <MobileDisplayOnly>
+      <MobileDisplayOnly position="relative" zIndex={1}>
         <Box minHeight="100vh">
           <Box px="5vw" pt="5vh" pb="64px">
             <Box display="flex" flexDirection="column">

@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { dynamodb } from "../../../libs/dynamodb";
+import { sendText } from "@/libs/api";
 import { validateSecretKey } from "../../../libs/auth-helpers";
 
 export default async function handler(
@@ -8,7 +9,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   if (req.method !== "GET") {
-    return res.status(405).send("ERROR - Method not allowed");
+    return sendText(res, 405, "ERROR - Method not allowed");
   }
 
   const deviceId = req.query.device_id as string;
@@ -37,12 +38,12 @@ export default async function handler(
           });
         }),
       );
-      return res.status(200).send(mostRecentAction);
+      return sendText(res, 200, mostRecentAction);
     } else {
-      return res.status(200).send(`NONE`);
+      return sendText(res, 200, `NONE`);
     }
   } catch (error) {
     console.error("Error:", error);
-    return res.status(500).send(`ERROR`);
+    return sendText(res, 500, `ERROR - ${error}`);
   }
 }

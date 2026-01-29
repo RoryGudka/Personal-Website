@@ -1,5 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { validateToken, validateDevice, addAction } from "../../libs/auth-helpers";
+import {
+  addAction,
+  validateDevice,
+  validateToken,
+} from "../../../libs/auth-helpers";
 
 export default async function handler(
   req: NextApiRequest,
@@ -21,8 +25,8 @@ export default async function handler(
   if (!device) return;
 
   try {
-    await addAction(deviceId, "calibrate_locked");
-    res.json({ message: "calibrate_locked action added for the device." });
+    await addAction(deviceId, "set_locked_position");
+    res.json({ message: "Locked position action added for the device." });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Unable to update the database." });

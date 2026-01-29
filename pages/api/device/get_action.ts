@@ -28,7 +28,6 @@ export default async function handler(
 
     if (result && result.Count && result.Items && result.Items[0]) {
       const mostRecentAction = result.Items[0].action;
-      res.send(mostRecentAction);
 
       await Promise.all(
         result.Items.map(async (item) => {
@@ -38,8 +37,9 @@ export default async function handler(
           });
         }),
       );
+      return res.status(200).send(mostRecentAction);
     } else {
-      res.send(`NONE`);
+      return res.status(200).send(`NONE`);
     }
   } catch (error) {
     console.error("Error:", error);

@@ -10,8 +10,13 @@ export const sendText = (
   status: number,
   body: string,
 ) => {
-  res.setHeader("Content-Type", "text/plain");
+  const buf = Buffer.from(body, "utf8");
+
+  res.statusCode = status;
+  res.setHeader("Content-Type", "text/plain; charset=utf-8");
   res.setHeader("Content-Encoding", "identity");
+  res.setHeader("Content-Length", buf.length);
   res.setHeader("Connection", "close");
-  res.status(status).send(body);
+
+  res.end(buf);
 };

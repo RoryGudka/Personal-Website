@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { validateSecretKey } from "../../libs/auth-helpers";
-import { dynamodb } from "../../libs/dynamodb";
+
+import { dynamodb } from "../../../libs/dynamodb";
+import { validateSecretKey } from "../../../libs/auth-helpers";
 
 export default async function handler(
   req: NextApiRequest,
@@ -27,7 +28,7 @@ export default async function handler(
 
     if (result && result.Count && result.Items && result.Items[0]) {
       const mostRecentAction = result.Items[0].action;
-      res.send(`{"status": "OK", "action": "${mostRecentAction}"}`);
+      res.send(mostRecentAction);
 
       await Promise.all(
         result.Items.map(async (item) => {
@@ -38,10 +39,10 @@ export default async function handler(
         }),
       );
     } else {
-      res.send(`{"status": "OK", "action": "none"}`);
+      res.send(`NONE`);
     }
   } catch (error) {
     console.error("Error:", error);
-    return res.send(`{"status": "ERROR"}`);
+    return res.status(500).send(`ERROR`);
   }
 }

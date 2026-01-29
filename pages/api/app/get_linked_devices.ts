@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { validateToken, getLinkedDevices } from "../../libs/auth-helpers";
+import { getLinkedDevices, validateToken } from "../../../libs/auth-helpers";
 
 export default async function handler(
   req: NextApiRequest,

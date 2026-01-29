@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { validateSecretKey } from "../../libs/auth-helpers";
-import { dynamodb } from "../../libs/dynamodb";
+
+import { dynamodb } from "../../../libs/dynamodb";
+import { validateSecretKey } from "../../../libs/auth-helpers";
 
 export default async function handler(
   req: NextApiRequest,
@@ -43,9 +44,9 @@ export default async function handler(
       },
     });
 
-    return res.send(`{"status": "OK"}`);
+    return res.send(`OK`);
   } catch (error) {
     console.error("Error:", error);
-    return res.send(`{"status": "ERROR"}`);
+    return res.send(`ERROR`);
   }
 }

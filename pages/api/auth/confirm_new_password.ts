@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
+
 import { CognitoUser } from "amazon-cognito-identity-js";
-import { userPool } from "../../libs/cognito";
+import { userPool } from "../../../libs/cognito";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {

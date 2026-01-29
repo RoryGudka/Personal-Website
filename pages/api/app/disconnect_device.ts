@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { validateToken, validateDevice } from "../../libs/auth-helpers";
-import { dynamodb } from "../../libs/dynamodb";
+import { validateDevice, validateToken } from "../../../libs/auth-helpers";
+
+import { dynamodb } from "../../../libs/dynamodb";
 
 export default async function handler(
   req: NextApiRequest,

@@ -1,5 +1,6 @@
+import { cognito, verifier } from "./cognito";
+
 import { NextApiResponse } from "next";
-import { verifier, cognito } from "./cognito";
 import { dynamodb } from "./dynamodb";
 
 export const validateToken = async (res: NextApiResponse, token: string) => {
@@ -91,7 +92,7 @@ export const validateSecretKey = async (
 ) => {
   try {
     if (!secretKey) {
-      res.send(`{"status": "ERROR"}`);
+      res.status(401).send("ERROR - no secret key");
       return null;
     }
 
@@ -101,14 +102,14 @@ export const validateSecretKey = async (
     });
 
     if (!device || !device.Item || device.Item.deviceSecretKey != secretKey) {
-      res.send(`{"status": "ERROR"}`);
+      res.status(401).send("ERROR - invalid secret key");
       return null;
     }
 
     return device.Item;
   } catch (e) {
     console.error(e);
-    res.send(`{"status": "ERROR"}`);
+    res.status(500).send(`ERROR - ${e}`);
     return null;
   }
 };

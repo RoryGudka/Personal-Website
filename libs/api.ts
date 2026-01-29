@@ -11,6 +11,6 @@ export const sendText = (
   body: string,
 ) => {
   res.setHeader("Content-Type", "text/plain");
-  res.setHeader("Content-Length", Buffer.byteLength(body));
+  res.setHeader("Content-Length", Buffer.byteLength(body) - 1);
   res.status(status).end(body);
 };

@@ -5,14 +5,13 @@ import {
   validateToken,
 } from "../../../libs/auth-helpers";
 
+import { handleCors } from "../../../libs/cors";
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  // Handle preflight
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
+  if (handleCors(req, res)) return;
 
   const { deviceId, networkId, networkPassword, accessToken } = req.body;
 

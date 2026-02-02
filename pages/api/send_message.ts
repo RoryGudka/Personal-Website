@@ -4,7 +4,7 @@ import { sendEmail } from "../../libs/ses";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     const { contact, message } = req.body;

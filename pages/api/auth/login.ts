@@ -1,13 +1,11 @@
 import { AuthenticationDetails, CognitoUser } from "amazon-cognito-identity-js";
 import { NextApiRequest, NextApiResponse } from "next";
 
+import { handleCors } from "../../../libs/cors";
 import { userPool } from "../../../libs/cognito";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Handle preflight
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
+  if (handleCors(req, res)) return;
 
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });

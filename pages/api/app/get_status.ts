@@ -1,14 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { validateDevice, validateToken } from "../../../libs/auth-helpers";
 
+import { handleCors } from "../../../libs/cors";
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  // Handle preflight
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
+  if (handleCors(req, res)) return;
 
   if (req.method !== "GET") {
     return res.status(405).json({ error: "Method not allowed" });

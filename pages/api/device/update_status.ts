@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { dynamodb } from "../../../libs/dynamodb";
+import { handleCors } from "../../../libs/cors";
 import { sendText } from "@/libs/api";
 import { validateSecretKey } from "../../../libs/auth-helpers";
 
@@ -8,6 +9,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
+  if (handleCors(req, res)) return;
+
   if (req.method !== "GET") {
     return sendText(res, 405, "ERROR - Method not allowed");
   }

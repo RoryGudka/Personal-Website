@@ -9,8 +9,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+  // Handle preflight
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
   }
 
   const { deviceId, networkId, networkPassword, accessToken } = req.body;

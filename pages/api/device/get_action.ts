@@ -40,7 +40,7 @@ export default async function handler(
       );
       return sendText(res, 200, mostRecentAction);
     } else {
-      return sendText(res, 200, `NONE`);
+      return sendText(res, 200, `none`);
     }
   } catch (error) {
     console.error("Error:", error);

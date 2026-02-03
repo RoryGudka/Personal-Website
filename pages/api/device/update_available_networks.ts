@@ -17,10 +17,8 @@ export default async function handler(
 
   const deviceId = req.query.device_id as string;
   const secretKey = req.query.secret_key as string;
-  const isLocked = req.query.is_locked as string;
-  const batteryStatus = req.query.battery_status as string;
-  const isUnlockCalibrated = req.query.is_unlock_calibrated as string;
-  const isLockCalibrated = req.query.is_lock_calibrated as string;
+  const availableNetworks =
+    (req.query.available_networks as string)?.split(",") || [];
 
   try {
     const device = await validateSecretKey(res, deviceId, secretKey);
@@ -30,18 +28,10 @@ export default async function handler(
       TableName: "LockmateDevices",
       Key: { deviceId },
       UpdateExpression:
-        "SET isLocked = :isLocked, batteryStatus = :batteryStatus, isUnlockCalibrated = :isUnlockCalibrated, isLockCalibrated = :isLockCalibrated, lastUpdateTimestamp = :timestamp",
+        "SET availableNetworks = :availableNetworks, lastUpdateTimestamp = :timestamp",
       ExpressionAttributeValues: {
         ":timestamp": new Date().toISOString(),
-        ":isLocked": isLocked === "T",
-        ":isUnlockCalibrated": isUnlockCalibrated === "T",
-        ":isLockCalibrated": isLockCalibrated === "T",
-        ":batteryStatus":
-          batteryStatus === "H"
-            ? "high"
-            : batteryStatus === "M"
-              ? "medium"
-              : "low",
+        ":availableNetworks": availableNetworks,
       },
     });
 

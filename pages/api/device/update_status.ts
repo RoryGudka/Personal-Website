@@ -45,7 +45,29 @@ export default async function handler(
       },
     });
 
-    return sendText(res, 200, `OK`);
+    const result = await dynamodb.query({
+      TableName: "LockmateActions",
+      KeyConditionExpression: "deviceId = :deviceId",
+      ExpressionAttributeValues: { ":deviceId": deviceId },
+      ScanIndexForward: false,
+      Limit: 1,
+    });
+
+    if (result && result.Count && result.Items && result.Items[0]) {
+      const mostRecentAction = result.Items[0].action;
+
+      await Promise.all(
+        result.Items.map(async (item) => {
+          await dynamodb.delete({
+            TableName: "LockmateActions",
+            Key: { deviceId: deviceId, timestamp: item.timestamp },
+          });
+        }),
+      );
+      return sendText(res, 200, mostRecentAction);
+    } else {
+      return sendText(res, 200, `none`);
+    }
   } catch (error) {
     console.error("Error:", error);
     return sendText(res, 500, `ERROR - ${error}`);

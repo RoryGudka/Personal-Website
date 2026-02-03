@@ -22,7 +22,7 @@ export default async function handler(
     const { username, email } = details;
     console.info(`Username: ${username}, Email: ${email}`);
 
-    const devices = await getLinkedDevices(email);
+    const devices = await getLinkedDevices(username);
     res.json({ devices });
   } catch (error) {
     console.error("Error:", error);

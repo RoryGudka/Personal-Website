@@ -27,12 +27,12 @@ export const validateToken = async (res: NextApiResponse, token: string) => {
   }
 };
 
-export const getLinkedDevices = async (email: string) => {
+export const getLinkedDevices = async (username: string) => {
   const devices = (
     await dynamodb.scan({
       TableName: "LockmateDevices",
       FilterExpression: "contains(linkedUserIds, :userId)",
-      ExpressionAttributeValues: { ":userId": email },
+      ExpressionAttributeValues: { ":userId": username },
     })
   ).Items;
   return devices;
@@ -40,7 +40,7 @@ export const getLinkedDevices = async (email: string) => {
 
 export const validateDevice = async (
   res: NextApiResponse,
-  email: string,
+  username: string,
   deviceId: string,
 ) => {
   try {
@@ -49,7 +49,7 @@ export const validateDevice = async (
       return null;
     }
 
-    const devices = await getLinkedDevices(email);
+    const devices = await getLinkedDevices(username);
     if (!devices) {
       res.status(500).json({ error: `No linked devices found.` });
       return null;

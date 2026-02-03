@@ -25,7 +25,7 @@ export default async function handler(
   const { username, email } = details;
   console.info(`Username: ${username}, Email: ${email}`);
 
-  const device = await validateDevice(res, email, deviceId);
+  const device = await validateDevice(res, username, deviceId);
   if (!device) return;
 
   try {
